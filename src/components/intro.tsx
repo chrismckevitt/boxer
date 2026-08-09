@@ -4,12 +4,9 @@ export default function Intro() {
             <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
                     <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
-                        <h2 className="text-4xl font-semibold tracking-tight text-[#110F0C] sm:text-5xl">Ready for the next adventure</h2>
-                        <p className="mt-6 text-xl/8 text-gray-950">
-                            A one-of-a-kind Peugeot Boxer conversion, hand-built from the ground up. Every surface, every joint, every detail crafted with intention.
-                        </p>
+                        <h2 className="text-4xl font-semibold tracking-tight text-[#110F0C] sm:text-5xl">Home, wherever you are.</h2>
                         <p className="mt-6 text-base/7 text-gray-900">
-                            Fully off-grid with solar charging, leisure battery, onboard water system, and independent diesel heater. Hook up to 230v mains or run free — the choice is yours. Oak worktops, rattan cabinetry, a fridge freezer, and a dining space that seats four. This isn't a compromise — it's a home that moves.
+                            A one-of-a-kind Peugeot Boxer conversion, hand-built from the ground up. Fully off-grid with solar, leisure battery, onboard water, and diesel heating — or hook up to mains when you want to. Oak worktops, rattan cabinetry, and a dining space that seats four. This isn't a compromise — it's a home that moves.
                         </p>
                     </div>
                     <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
