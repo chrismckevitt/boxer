@@ -12,7 +12,6 @@ const HOVER_BOOST  = 5.0    // global amplitude multiplier on hover (extremely w
 const LOCAL_AMP    = 58     // px — cursor repulsion strength
 const LOCAL_RADIUS = 220    // px — repulsion radius
 const LINE_A_DARK  = 0.55
-const LINE_A_LIGHT = 0.75
 
 export default function WaveLines() {
   const containerRef = useRef<HTMLDivElement>(null)
