@@ -6,8 +6,8 @@ export default function InteriorGridOne() {
                     <div className="w-full flex-auto sm:w-0 lg:w-auto lg:flex-none lg:self-end">
                         <img
                             alt="Boxer van interior dining area with skylight and rattan cabinetry"
-                            src="/images/interior/img_3793.webp"
-                            className="aspect-7/5 w-full max-w-none bg-gray-800 object-cover sm:w-148 max-sm:rounded-sm"
+                            src="/images/interior/img_3845.webp"
+                            className="aspect-7/5 w-full max-w-none bg-gray-800 object-cover sm:w-148 lg:aspect-square max-sm:rounded-sm"
                         />
                     </div>
                     <div className="flex w-full flex-wrap items-start gap-6 sm:gap-8 lg:contents">

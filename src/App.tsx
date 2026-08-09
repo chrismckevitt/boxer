@@ -10,10 +10,12 @@ import ImageGrid from "@/components/image-grid.tsx";
 import InteriorGridOne from "@/components/interior-grid-one.tsx";
 import InteriorGridTwo from "@/components/interior-grid-two.tsx";
 import Footer from "@/components/footer.tsx";
+import PeelCornerReveal from "@/components/aicanvas/peel-corner-reveal.tsx";
 
 export default function App() {
     return (
         <>
+            <PeelCornerReveal/>
             <Hero/>
             <Intro/>
             <LogoCloud/>
