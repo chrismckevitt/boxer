@@ -38,29 +38,31 @@ const BG_DARK = '#110F0C'
 const BG_LIGHT = '#110F0C'
 
 const SEED_QUOTES = [
-    'love the new layout',
-    'prompts are 🔥',
-    'found a tiny bug on hover',
-    'please add a search',
-    'this saved me hours',
-    'fonts feel just right',
-    'mobile nav could be bigger',
-    'the physics here rules',
-    'more components please',
-    'onboarding was smooth',
-    'love the new layout',
-    'prompts are 🔥',
-    'found a tiny bug on hover',
-    'please add a search',
-    'this saved me hours',
-    'fonts feel just right',
-    'mobile nav could be bigger',
-    'the physics here rules',
-    'more components please',
-    'onboarding was smooth',
+    'if it fits, it sits 🚐',
+    'home is where you park it',
+    'my other house has wheels',
+    'van life = best life',
+    'GPS said "turn around" 3 times',
+    'who needs a mortgage anyway',
+    'the fridge runs on vibes',
+    'levelling blocks are my love language',
+    'slide-out stuck again 🙃',
+    'neighbours change daily, drama stays zero',
+    'shower time: 90 seconds, go!',
+    'I live in a box and I love it',
+    'campsite Wi-Fi is a myth',
+    'pop-top up = penthouse mode',
+    'diesel prices? never heard of her',
+    'awning snapped in the wind again',
+    'grey water tank full, spirits fuller',
+    'sunset office > corner office',
+    'my commute is 0 km',
+    "if the van's rockin… we hit a pothole",
 ]
 
-const SEED_EMOJIS = ['👏', '💡', '🙌', '👀', '💬', '✅', '🔥', '💯', '🎉', '❤️', '🤔', '⭐']
+const SEED_EMOJIS = ['🚐', '🏕️', '⛺', '🌅', '🔥', '🗺️', '⛽', '🌊', '🏔️', '☀️', '🦟', '🍳']
+
+const MOBILE_SEED_COUNT = 10
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 type StickerKind = 'text' | 'emoji'
@@ -302,25 +304,14 @@ export default function StickerWall() {
 
         function seed(Matter: typeof import('matter-js'), w: number, h: number) {
             const palette = paletteRef.current
-            // 8 text cards, distributed across the whole area so they pre-pile.
-            for (let i = 0; i < SEED_QUOTES.length; i++) {
+            const isMobile = w < 640
+            const quoteCount = isMobile ? MOBILE_SEED_COUNT : SEED_QUOTES.length
+            for (let i = 0; i < quoteCount; i++) {
                 const quote = SEED_QUOTES[i]
                 const color = palette[i % palette.length]
                 const x = randBetween(100, Math.max(120, w - 100))
                 const y = randBetween(80, Math.max(120, h - 120))
                 const sticker = makeTextSticker(Matter, quote, x, y, color, false)
-                Matter.Body.setAngularVelocity(sticker.body, randBetween(-0.05, 0.05))
-                Matter.Body.setVelocity(sticker.body, {x: randBetween(-0.5, 0.5), y: randBetween(-0.5, 0.5)})
-                Matter.Composite.add(world!, sticker.body)
-                stickersRef.current.push(sticker)
-            }
-            // 6 emoji stickers
-            for (let i = 0; i < SEED_EMOJIS.length; i++) {
-                const emoji = SEED_EMOJIS[i]
-                const color = palette[(i + 3) % palette.length]
-                const x = randBetween(80, Math.max(100, w - 80))
-                const y = randBetween(80, Math.max(120, h - 120))
-                const sticker = makeEmojiSticker(Matter, emoji, x, y, color)
                 Matter.Body.setAngularVelocity(sticker.body, randBetween(-0.05, 0.05))
                 Matter.Body.setVelocity(sticker.body, {x: randBetween(-0.5, 0.5), y: randBetween(-0.5, 0.5)})
                 Matter.Composite.add(world!, sticker.body)
@@ -659,7 +650,7 @@ export default function StickerWall() {
                                 textShadow: titleShadow,
                             }}
                         >
-                            Leave a note
+                            Leave a bumper sticker
                         </h2>
                     </div>
                     <div

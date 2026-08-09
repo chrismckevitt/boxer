@@ -17,7 +17,7 @@ export default function ImageGrid() {
                             <img
                                 alt="Boxer van interior wide shot showing full living space"
                                 src="/images/exterior/img_3615.webp"
-                                className="aspect-7/5 w-full max-w-none bg-gray-800 object-cover sm:w-148 max-sm:rounded-lg"
+                                className="aspect-7/5 w-full max-w-none bg-gray-800 object-cover sm:w-148 max-sm:rounded-sm"
                             />
                         </div>
                         <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-148 lg:items-start lg:justify-end lg:gap-x-8">
@@ -25,14 +25,14 @@ export default function ImageGrid() {
                                 <img
                                     alt="Boxer van front 3/4 at dusk with interior lights glowing"
                                     src="/images/exterior/img_3685.webp"
-                                    className="aspect-4/3 w-full max-w-none flex-none bg-gray-800 object-cover sm:w-[24rem] max-sm:rounded-lg"
+                                    className="aspect-4/3 w-full max-w-none flex-none bg-gray-800 object-cover sm:w-[24rem] max-sm:rounded-sm"
                                 />
                             </div>
                             <div className="flex w-full flex-auto justify-end sm:w-96 lg:w-auto lg:flex-none">
                                 <img
                                     alt="Boxer van passenger side with sunset reflection in windows"
                                     src="/images/exterior/img_3742.webp"
-                                    className="aspect-7/5 w-full max-w-none flex-none bg-gray-800 object-cover sm:w-148 max-sm:rounded-lg"
+                                    className="aspect-7/5 w-full max-w-none flex-none bg-gray-800 object-cover sm:w-148 max-sm:rounded-sm"
                                 />
                             </div>
                             <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">

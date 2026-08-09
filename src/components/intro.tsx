@@ -13,26 +13,26 @@ export default function Intro() {
                         </p>
                     </div>
                     <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
-                        <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
+                        <div className="w-full flex-auto sm:w-0 lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
                             <img
                                 alt="Boxer van interior dining and living space with skylight"
                                 src="/images/interior/img_3781.webp"
-                                className="aspect-7/5 w-148 max-w-none bg-gray-800 object-cover max-sm:w-120"
+                                className="aspect-7/5 w-full max-w-none bg-gray-800 object-cover sm:w-148 max-sm:rounded-sm"
                             />
                         </div>
                         <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-148 lg:items-start lg:justify-end lg:gap-x-8">
-                            <div className="order-first flex w-64 flex-none justify-end self-end max-sm:w-40 lg:w-auto">
+                            <div className="order-first flex w-full flex-none justify-end self-end sm:w-64 lg:w-auto">
                                 <img
                                     alt="Custom bookshelf with reading light and personal touches"
                                     src="/images/interior/img_3761.webp"
-                                    className="aspect-4/3 w-[24rem] max-w-none flex-none bg-gray-800 object-cover"
+                                    className="aspect-4/3 w-full max-w-none flex-none bg-gray-800 object-cover sm:w-[24rem] max-sm:rounded-sm"
                                 />
                             </div>
-                            <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
+                            <div className="flex w-full flex-auto justify-end sm:w-96 lg:w-auto lg:flex-none">
                                 <img
                                     alt="Person relaxing inside Boxer van looking out window"
                                     src="/images/interior/img_3446.webp"
-                                    className="aspect-7/5 w-148 max-w-none flex-none bg-gray-800 object-cover max-sm:w-120"
+                                    className="aspect-7/5 w-full max-w-none flex-none bg-gray-800 object-cover sm:w-148 max-sm:rounded-sm"
                                 />
                             </div>
                             <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
