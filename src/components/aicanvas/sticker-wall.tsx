@@ -21,7 +21,6 @@ const TEXT_MAX_WIDTH = 180
 const TEXT_PAD_X = 14
 const TEXT_PAD_Y = 10
 const TEXT_LINE_H = 20
-
 const EMOJI_SIZE = 72
 const EMOJI_FONT_PX = 42
 
@@ -62,7 +61,7 @@ const SEED_QUOTES = [
 
 const SEED_EMOJIS = ['🚐', '🏕️', '⛺', '🌅', '🔥', '🗺️', '⛽', '🌊', '🏔️', '☀️', '🦟', '🍳']
 
-const MOBILE_SEED_COUNT = 10
+const MOBILE_SEED_COUNT = 7
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 type StickerKind = 'text' | 'emoji'
@@ -273,6 +272,7 @@ export default function StickerWall() {
             return sticker
         }
 
+
         function makeEmojiSticker(
             Matter: typeof import('matter-js'),
             emoji: string,
@@ -312,6 +312,19 @@ export default function StickerWall() {
                 const x = randBetween(100, Math.max(120, w - 100))
                 const y = randBetween(80, Math.max(120, h - 120))
                 const sticker = makeTextSticker(Matter, quote, x, y, color, false)
+                Matter.Body.setAngularVelocity(sticker.body, randBetween(-0.05, 0.05))
+                Matter.Body.setVelocity(sticker.body, {x: randBetween(-0.5, 0.5), y: randBetween(-0.5, 0.5)})
+                Matter.Composite.add(world!, sticker.body)
+                stickersRef.current.push(sticker)
+            }
+            // Emoji stickers
+            const emojiCount = isMobile ? Math.floor(SEED_EMOJIS.length / 2) : SEED_EMOJIS.length
+            for (let i = 0; i < emojiCount; i++) {
+                const emoji = SEED_EMOJIS[i]
+                const color = palette[(i + 3) % palette.length]
+                const x = randBetween(80, Math.max(100, w - 80))
+                const y = randBetween(80, Math.max(120, h - 120))
+                const sticker = makeEmojiSticker(Matter, emoji, x, y, color)
                 Matter.Body.setAngularVelocity(sticker.body, randBetween(-0.05, 0.05))
                 Matter.Body.setVelocity(sticker.body, {x: randBetween(-0.5, 0.5), y: randBetween(-0.5, 0.5)})
                 Matter.Composite.add(world!, sticker.body)

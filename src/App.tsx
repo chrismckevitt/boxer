@@ -9,6 +9,7 @@ import SplitImage from "@/components/split-image.tsx";
 import ImageGrid from "@/components/image-grid.tsx";
 import InteriorGridOne from "@/components/interior-grid-one.tsx";
 import InteriorGridTwo from "@/components/interior-grid-two.tsx";
+import Footer from "@/components/footer.tsx";
 
 export default function App() {
     return (
@@ -24,6 +25,7 @@ export default function App() {
             <InteriorGridTwo/>
             <StickerWall/>
             <CookieBanner/>
+            <Footer />
         </>
 
     )

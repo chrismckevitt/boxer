@@ -3,7 +3,7 @@ import {useState} from "react";
 export default function CookieBanner() {
     const [show, setShow] = useState(true);
     return (show ?
-            <div className="pointer-events-none fixed inset-x-0 bottom-0 px-6 pb-6">
+            <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 px-6 pb-6">
                 <div
                     className="pointer-events-auto ml-auto max-w-xl rounded-xl bg-[#110F0C] p-6 outline-1 -outline-offset-1 outline-white/10">
                     <p className="text-sm/6 text-white">
