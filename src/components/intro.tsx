@@ -9,7 +9,7 @@ export default function Intro() {
                             A one-of-a-kind Peugeot Boxer conversion, hand-built from the ground up. Every surface, every joint, every detail crafted with intention.
                         </p>
                         <p className="mt-6 text-base/7 text-gray-900">
-                            Oak worktops, rattan cabinetry, a full kitchen with induction hob, and a dining space that seats four. This isn't a compromise — it's a home that moves.
+                            Fully off-grid with solar charging, leisure battery, onboard water system, and independent diesel heater. Hook up to 230v mains or run free — the choice is yours. Oak worktops, rattan cabinetry, a fridge freezer, and a dining space that seats four. This isn't a compromise — it's a home that moves.
                         </p>
                     </div>
                     <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
