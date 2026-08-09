@@ -43,7 +43,6 @@ function useTheme(ref: RefObject<HTMLElement | null>): 'light' | 'dark' {
 // Colors that don't change with theme
 const PEEL_FILL = '#25D366'
 const PEEL_FILL_DEEP = '#128C7E'
-const PEEL_INK = '#FFFFFF'
 
 // Geometry (all in SVG units)
 const VB_W = 500
@@ -79,7 +78,6 @@ export default function PeelCornerReveal() {
   // Theme-aware palette — the card inverts between modes.
   //   dark  → white card on near-black page, black ink
   //   light → dark card on warm off-white page, light ink
-  const PAGE_BG = theme === 'dark' ? '#2E2E2C' : '#D0CCC4'
   const CARD_FILL = theme === 'dark' ? '#FFFFFF' : '#121212'
   const CARD_INK = theme === 'dark' ? '#0A0A0A' : '#F5F5F0'
   const FOLD_STROKE = theme === 'dark' ? 'rgba(0,0,0,0.28)' : 'rgba(255,255,255,0.22)'
@@ -160,10 +158,6 @@ export default function PeelCornerReveal() {
     const dx = BR.x - ax // B.x - A.x  (B.x = BR.x)
     return (Math.atan2(dy, dx) * 180) / Math.PI
   })
-
-  // Card polygon with BR corner carved off along A–B:
-  //   TL → TR → B → A → BL
-  const cardPoints = useMotionTemplate`${TL.x},${TL.y} ${TR.x},${TR.y} ${Bx},${By} ${Ax},${Ay} ${BL.x},${BL.y}`
 
   // Rounded card path: same shape as cardPoints, but TL/TR/BL corners are
   // rounded to CARD_RADIUS. The BR is still carved by the A–B fold and stays
