@@ -6,12 +6,12 @@ export default function Hero() {
             <div className="relative" id="wave-lines-container">
                 <WaveLines/>
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <h1 className="text-7xl font-bold tracking-tight text-white">
-                    BOXER
-                </h1>
-                <h2 className="text-5xltracking-tight text-white">
-                    CAMPER
-                </h2>
+                    <h1 className="text-7xl font-bold tracking-tight text-white">
+                        {`${"Boxer".toUpperCase()}.`}
+                    </h1>
+                    <h2 className="text-5xltracking-tight text-white">
+                        {`${"Camp".toUpperCase()}`}
+                    </h2>
                 </div>
             </div>
             <div className="relative overflow-hidden">
@@ -22,8 +22,8 @@ export default function Hero() {
                     playsInline
                     className="absolute inset-0 h-full w-full object-cover"
                 >
-                    <source src="/video/boxer-hero.webm" type="video/webm" />
-                    <source src="/video/boxer-hero.mp4" type="video/mp4" />
+                    <source src="/video/boxer-hero.webm" type="video/webm"/>
+                    <source src="/video/boxer-hero.mp4" type="video/mp4"/>
                 </video>
             </div>
         </div>
