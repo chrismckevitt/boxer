@@ -63,6 +63,31 @@ const SEED_EMOJIS = ['🚐', '🏕️', '⛺', '🌅', '🔥', '🗺️', '⛽',
 
 const MOBILE_SEED_COUNT = 7
 
+const LS_KEY = 'sticker-wall-user-stickers'
+
+interface StoredSticker {
+    kind: StickerKind
+    content: string
+}
+
+function loadUserStickers(): StoredSticker[] {
+    try {
+        const raw = localStorage.getItem(LS_KEY)
+        if (!raw) return []
+        return JSON.parse(raw) as StoredSticker[]
+    } catch {
+        return []
+    }
+}
+
+function saveUserSticker(kind: StickerKind, content: string) {
+    const existing = loadUserStickers()
+    existing.push({kind, content})
+    // Keep at most STICKER_CAP entries to avoid unbounded growth
+    if (existing.length > STICKER_CAP) existing.splice(0, existing.length - STICKER_CAP)
+    localStorage.setItem(LS_KEY, JSON.stringify(existing))
+}
+
 // ─── Types ───────────────────────────────────────────────────────────────────
 type StickerKind = 'text' | 'emoji'
 
@@ -305,10 +330,28 @@ export default function StickerWall() {
         function seed(Matter: typeof import('matter-js'), w: number, h: number) {
             const palette = paletteRef.current
             const isMobile = w < 640
-            const quoteCount = isMobile ? MOBILE_SEED_COUNT : SEED_QUOTES.length
-            for (let i = 0; i < quoteCount; i++) {
-                const quote = SEED_QUOTES[i]
-                const color = palette[i % palette.length]
+            const totalTextSlots = isMobile ? MOBILE_SEED_COUNT : SEED_QUOTES.length
+            const totalEmojiSlots = isMobile ? Math.floor(SEED_EMOJIS.length / 2) : SEED_EMOJIS.length
+
+            // Load user stickers from localStorage
+            const userStickers = loadUserStickers()
+            const userTexts = userStickers.filter(s => s.kind === 'text')
+            const userEmojis = userStickers.filter(s => s.kind === 'emoji')
+
+            // User stickers first, then fill remaining slots with fallbacks
+            const textsToRender = [
+                ...userTexts.map(s => s.content),
+                ...SEED_QUOTES,
+            ].slice(0, totalTextSlots)
+
+            const emojisToRender = [
+                ...userEmojis.map(s => s.content),
+                ...SEED_EMOJIS,
+            ].slice(0, totalEmojiSlots)
+
+            let colorIdx = 0
+            for (const quote of textsToRender) {
+                const color = palette[colorIdx % palette.length]
                 const x = randBetween(100, Math.max(120, w - 100))
                 const y = randBetween(80, Math.max(120, h - 120))
                 const sticker = makeTextSticker(Matter, quote, x, y, color, false)
@@ -316,12 +359,12 @@ export default function StickerWall() {
                 Matter.Body.setVelocity(sticker.body, {x: randBetween(-0.5, 0.5), y: randBetween(-0.5, 0.5)})
                 Matter.Composite.add(world!, sticker.body)
                 stickersRef.current.push(sticker)
+                colorIdx++
             }
+
             // Emoji stickers
-            const emojiCount = isMobile ? Math.floor(SEED_EMOJIS.length / 2) : SEED_EMOJIS.length
-            for (let i = 0; i < emojiCount; i++) {
-                const emoji = SEED_EMOJIS[i]
-                const color = palette[(i + 3) % palette.length]
+            for (const emoji of emojisToRender) {
+                const color = palette[(colorIdx + 3) % palette.length]
                 const x = randBetween(80, Math.max(100, w - 80))
                 const y = randBetween(80, Math.max(120, h - 120))
                 const sticker = makeEmojiSticker(Matter, emoji, x, y, color)
@@ -329,6 +372,7 @@ export default function StickerWall() {
                 Matter.Body.setVelocity(sticker.body, {x: randBetween(-0.5, 0.5), y: randBetween(-0.5, 0.5)})
                 Matter.Composite.add(world!, sticker.body)
                 stickersRef.current.push(sticker)
+                colorIdx++
             }
         }
 
@@ -555,6 +599,9 @@ export default function StickerWall() {
 
         Matter.Composite.add(world, body)
         stickersRef.current.push(sticker)
+
+        // Persist to localStorage
+        saveUserSticker('text', value)
 
         // Enforce soft cap: fade the oldest that's not already fading.
         if (stickersRef.current.length > STICKER_CAP) {
