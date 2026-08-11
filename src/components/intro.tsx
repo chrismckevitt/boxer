@@ -6,7 +6,7 @@ export default function Intro() {
                     <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
                         <h2 className="text-4xl font-semibold tracking-tight text-[#110F0C] sm:text-5xl">Home, wherever you are.</h2>
                         <p className="mt-6 text-base/7 text-gray-900">
-                            A one-of-a-kind Peugeot Boxer conversion, hand-built from the ground up. Fully off-grid with solar, leisure battery, onboard water, and diesel heating — or hook up to mains when you want to. Oak worktops, rattan cabinetry, and a dining space that seats four. This isn't a compromise — it's a home that moves.
+                            A one-of-a-kind Peugeot Boxer conversion, hand-built from the ground up. Fully off-grid with solar, leisure battery, onboard water, and diesel heating — or hook up to mains when you want to. Birch worktops, rattan cabinetry, and a dining space that seats four. This isn't a compromise — it's a home that moves.
                         </p>
                     </div>
                     <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
